@@ -24,6 +24,7 @@ class AnimatedSVGPath extends Component {
     transform: PropTypes.string,
     reverse: PropTypes.bool,
     rewind: PropTypes.bool,
+    onCompleted: PropTypes.any,
   };
 
   static defaultProps = {
@@ -59,6 +60,7 @@ class AnimatedSVGPath extends Component {
       easing = Easing["linear"],
       reverse,
       rewind,
+      onCompleted,
     } = this.props;
     this.strokeDashoffset.setValue(!reverse ? this.length : 0);
     const animationsSequence = [].concat(
@@ -84,6 +86,8 @@ class AnimatedSVGPath extends Component {
     );
 
     Animated.sequence(animationsSequence).start(() => {
+      if (typeof onCompleted === 'function') onCompleted();
+      
       if (loop) {
         this.animate();
       }
