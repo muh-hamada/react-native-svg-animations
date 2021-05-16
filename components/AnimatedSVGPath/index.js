@@ -13,6 +13,7 @@ class AnimatedSVGPath extends Component {
     strokeColor: PropTypes.string,
     strokeWidth: PropTypes.number,
     strokeLinecap: PropTypes.string,
+    strokeLinejoin: PropTypes.string,
     easing: PropTypes.any,
     duration: PropTypes.number,
     height: PropTypes.number,
@@ -31,6 +32,7 @@ class AnimatedSVGPath extends Component {
     strokeColor: "black",
     strokeWidth: 1,
     strokeLinecap: "butt",
+    strokeLinejoin: "miter",
     easing: Easing.easeInOut,
     duration: 1000,
     delay: 1000,
@@ -108,6 +110,7 @@ class AnimatedSVGPath extends Component {
       strokeColor,
       strokeWidth,
       strokeLinecap,
+      strokeLinejoin,
       strokeDashArray: dashArray,
       transform,
     } = this.props;
@@ -118,6 +121,7 @@ class AnimatedSVGPath extends Component {
           strokeDashoffset={this.strokeDashoffset}
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
+          strokeLinejoin={strokeLinejoin}
           stroke={strokeColor}
           scale={scale}
           fill={fill}
